@@ -1,0 +1,23 @@
+{
+  "name": "MEAN-ToDo-App",
+  "version": "1.0.0",
+  "description": "A ToDo app using the MEAN stack (MongoDB, Express.js, AngularJS, and Node.js), along with other tools, such as Webpack, SASS, and Babel/ES6.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbullek/MEAN-ToDo-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbullek/MEAN-ToDo-App/issues"
+  },
+  "homepage": "https://github.com/bbullek/MEAN-ToDo-App#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
