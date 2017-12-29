@@ -17,7 +17,7 @@ app.all('/', function(request, response) {
 			</head>\
 			<body>\
 				<div ui-view></div>\
-				<script src="bundle.js"></script>\
+				<script src="/bundle.js"></script>\
 			</body>\
 		</html>\
 	');

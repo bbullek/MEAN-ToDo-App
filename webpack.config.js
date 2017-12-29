@@ -51,6 +51,7 @@ module.exports = {
 
 	devServer: {
 		hot: true,
+		// Route all unknown paths to a backend on port 3000 (connecting node & webpack servers)
 		proxy: {
 			'/': 'http://localhost:3000'
 		}
