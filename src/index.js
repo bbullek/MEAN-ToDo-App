@@ -1,6 +1,7 @@
 // File: index.js
 // December 2017
 
-const message = "Hello from the entry file!!!!";
+import angular from 'angular';
+import appModule from 'config'; // Import our Angular app from config.js
 
-console.log(message);
+angular.bootstrap(document, [appModule.name]);

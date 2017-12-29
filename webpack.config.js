@@ -27,13 +27,20 @@ module.exports = {
 
 	// Define loaders
 	module: {
-		rules: [{
+		rules: [
+		  {
 			test: /\.js$/,
 			exclude: /node_modules/,
 			loader: 'babel-loader',
 			// We can use query here because we have only 1 loader
 			query: { presets: ['es2015'] }
-		}]
+		  },
+		  // Loader for HTML files
+		  {
+			test: /\.html$/,
+			loader: 'raw-loader'
+		  }
+		]
 	},
 
 	// Plugins required to load webpack dev server

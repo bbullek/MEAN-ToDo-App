@@ -13,9 +13,10 @@ app.all('/', function(request, response) {
 		<html>\
 			<head>\
 				<title>MEAN ToDo App</title>\
+				<base href="/">\
 			</head>\
 			<body>\
-				<h1>Hello I <3 andrew</h1>\
+				<div ui-view></div>\
 				<script src="bundle.js"></script>\
 			</body>\
 		</html>\
