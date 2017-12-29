@@ -7,7 +7,7 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Define a route at the root of the app
-app.all('/w', function(request, response) {
+app.all('/', function(request, response) {
 	response.send('\
 		<!DOCTYPE html>\
 		<html>\
@@ -15,7 +15,8 @@ app.all('/w', function(request, response) {
 				<title>MEAN ToDo App</title>\
 			</head>\
 			<body>\
-				<h1>Hello, this is the app</h1>\
+				<h1>Hello I <3 andrew</h1>\
+				<script src="bundle.js"></script>\
 			</body>\
 		</html>\
 	');
