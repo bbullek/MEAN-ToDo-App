@@ -22,7 +22,7 @@ module.exports = {
 	// Where webpack will look for bundled files
 	resolve: {
 		modules: ['node_modules', 'src'],
-		extensions: ['.js']
+		extensions: ['.js', '.scss']
 	},
 
 	// Define loaders
@@ -39,6 +39,16 @@ module.exports = {
 		  {
 			test: /\.html$/,
 			loader: 'raw-loader'
+		  },
+		  // Loader for SCSS files (SASS)
+		  {
+			test: /\.scss$/,
+			loader: [
+				'style-loader',
+				'css-loader',
+				'autoprefixer-loader?browsers=last 3 versions',
+				'sass-loader?outputStyle=expanded'
+			]
 		  }
 		]
 	},
