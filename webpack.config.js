@@ -10,6 +10,7 @@ module.exports = {
 	entry: [
 		'webpack-dev-server/client?http://127.0.0.1:8080/',
 		'webpack/hot/only-dev-server',
+		'bootstrap-loader',
 		'./src'
 	],
 
@@ -46,9 +47,18 @@ module.exports = {
 			loader: [
 				'style-loader',
 				'css-loader',
-				'autoprefixer-loader?browsers=last 3 versions',
+				// 'autoprefixer-loader?browsers=last 3 versions',
 				'sass-loader?outputStyle=expanded'
 			]
+		  },
+		  // Loader for Bootstrap fonts
+		  {
+			test: /\.(woff2?|ttf|eot|svg)$/,
+			loader: 'url-loader?1imit=10000'
+		  },
+		  {
+			test: /bootstrap-sass\/assets\/javascripts\//,
+			loader: 'imports?jQuery=jquery'
 		  }
 		]
 	},
@@ -56,7 +66,10 @@ module.exports = {
 	// Plugins required to load webpack dev server
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NoEmitOnErrorsPlugin()
+		new webpack.NoEmitOnErrorsPlugin(),
+		new webpack.ProvidePlugin({
+			jQuery: 'jquery'
+		})
 	],
 
 	devServer: {
