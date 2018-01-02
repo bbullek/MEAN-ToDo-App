@@ -1,6 +1,8 @@
 // File: todos.js
 // Updated December 2017
 
+import _ from 'lodash'; // Functionality for easy removal from todo list
+
 export default function($scope) {
   let params = {
     createHasInput: false
@@ -81,4 +83,13 @@ export default function($scope) {
     todo.task = todo.updatedTask;
     todo.isEditing = false;
   };
+
+  /*
+   * Removes the task from the user's todo list when they click the Delte 
+   * button.
+   */
+  $scope.deleteTask = function(todoToDelete) {
+    // Use lodash to remove the given todo from the list
+    _.remove($scope.todos, todo => todo.task === todoToDelete.task); 
+  }
 }

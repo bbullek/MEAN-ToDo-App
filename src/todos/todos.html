@@ -36,7 +36,7 @@
 			<td>
 				<!-- Show the edit and delete buttons if not editing -->
 				<button ng-if="!todo.isEditing" class="btn btn-info" ng-click="onEditClick(todo)">Edit</button>
-				<button ng-if="!todo.isEditing" class="btn btn-danger">Delete</button>
+				<button ng-if="!todo.isEditing" class="btn btn-danger" ng-click="deleteTask(todo)">Delete</button>
 
 				<!-- Show the save and cancel buttons if editing -->
 				<button ng-if="todo.isEditing" class="btn btn-primary" ng-click="updateTask(todo)">Save</button>
