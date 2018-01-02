@@ -1,14 +1,15 @@
 // File: config.js
-// Updated December 2017
+// Updated January 2017
 
 // This is where our main Angular module will live and where we will configure 
 // our routes.
 
 import angular from "angular"; // ES6 syntax, not vanilla JS
 import uiRouter from "angular-ui-router";
+import todoFactory from 'factories/todo-factory';
 import todosController from 'todos/todos';
 
-const app = angular.module('app', [uiRouter]);
+const app = angular.module('app', [uiRouter, todoFactory.name]);
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 	// Redirect to root of our app if any other url is entered
