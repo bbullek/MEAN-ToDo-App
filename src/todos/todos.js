@@ -9,17 +9,39 @@ export default function($scope) {
   $scope.todos = [
     {
       task: 'do dishes',
-      isCompleted: false
+      isCompleted: false,
+      isEditing: false
     },
     {
       task: 'walk the dog',
-      isCompleted: true
+      isCompleted: true,
+      isEditing: false
     }
   ];
 
+  /*
+   * Decorates the task's text with a strikethrough when the checkbox is 
+   * ticked.
+   */
   $scope.onCompletedClick = function(todo) {
     todo.isCompleted = !todo.isCompleted;
   };
+
+  /*
+   * Shows a textbox where the user can edit a task (triggered by clicking the
+   * blue Edit button).
+   */
+  $scope.onEditClick = function(todo) {
+    todo.isEditing = true;
+    todo.updatedTask = todo.task;
+  }
+
+  /*
+   * Exits editing mode when the user clicks the Cancel button.
+   */
+  $scope.onCancelClick = function(todo) {
+    todo.isEditing = false;
+  }
 
   /*
    * Monitor the textbox to append new tasks as they are added.
@@ -49,5 +71,14 @@ export default function($scope) {
   $scope.createTask = function() {
     params.createHasInput = false;
     $scope.createTaskInput = ''; // Clear the textbox
+  };
+
+  /*
+   * Updates the task's name after the user has typed a new string via the Edit
+   * button.
+   */
+  $scope.updateTask = function(todo) {
+    todo.task = todo.updatedTask;
+    todo.isEditing = false;
   };
 }
