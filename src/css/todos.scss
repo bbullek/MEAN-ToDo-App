@@ -16,6 +16,12 @@
     position: relative;
     top: 4px;
   }
+
+  &__task {
+    &-completed {
+      text-decoration: line-through;
+    }
+  }
 }
 
 th, td {
