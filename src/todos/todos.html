@@ -7,7 +7,7 @@
 	<h2>ToDo App</h2>
 
 	<!-- 'Create task' button and entry-->
-	<form>
+	<form ng-submit="createTask()">
 		<input class="form-control todos__create-input" placeholder="What do I need to do?" ng-model="createTaskInput" />
 		<button class="btn btn-success todos__create-button">Create Task</button>
 	</form>

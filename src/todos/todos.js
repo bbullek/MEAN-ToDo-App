@@ -41,4 +41,13 @@ export default function($scope) {
       $scope.todos[$scope.todos.length - 1].task = val;
     }
   });
+
+  /*
+   * Saves the task to the todo list when the green 'Create Task' button is 
+   * clicked or when the user hits enter.
+   */
+  $scope.createTask = function() {
+    params.createHasInput = false;
+    $scope.createTaskInput = ''; // Clear the textbox
+  };
 }
