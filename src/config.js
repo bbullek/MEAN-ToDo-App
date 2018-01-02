@@ -1,5 +1,5 @@
 // File: config.js
-// December 2017
+// Updated December 2017
 
 // This is where our main Angular module will live and where we will configure 
 // our routes.

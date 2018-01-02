@@ -1,5 +1,5 @@
 // File: webpack.config.js
-// December 2017
+// Updated December 2017
 
 var webpack = require('webpack');
 var path = require('path');
