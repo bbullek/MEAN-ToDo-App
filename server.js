@@ -3,8 +3,11 @@
 
 var express = require('express');
 var app = express();
+var routes = require('./src/server/routes');
 
 var PORT = process.env.PORT || 3000;
+
+routes(app);
 
 // Define a route at the root of the app
 app.all('/', function(request, response) {
