@@ -8,25 +8,16 @@ export default function($scope, todoFactory) {
     createHasInput: false
   };
 
-  $scope.todos = [
-    {
-      task: 'do dishes',
-      isCompleted: false,
-      isEditing: false
-    },
-    {
-      task: 'walk the dog',
-      isCompleted: true,
-      isEditing: false
-    }
-  ];
+  $scope.todos = [];
+
+  todoFactory.getTasks($scope); // Pull the todo's saved to the database
 
   /****************** Bind methods to our todoFactory module ******************/
 
   const { createTask, updateTask, deleteTask, watchCreateTaskInput } = todoFactory;
 
   $scope.createTask = _.partial(createTask, $scope, params);
-  $scope.updateTask = _.partial(updateTask);
+  $scope.updateTask = _.partial(updateTask, $scope);
   $scope.deleteTask = _.partial(deleteTask, $scope);
   $scope.$watch('createTaskInput', _.partial(watchCreateTaskInput,
     $scope, params));

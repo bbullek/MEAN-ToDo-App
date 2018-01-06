@@ -3,15 +3,18 @@
 
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 var routes = require('./src/server/routes');
 
 var PORT = process.env.PORT || 3000;
 
+app.use(bodyParser.json());
+
 routes(app);
 
 // Define a route at the root of the app
-app.all('/', function(request, response) {
-	response.send('\
+app.all('/*', function(req, res) {
+	res.send('\
 		<!DOCTYPE html>\
 		<html>\
 			<head>\

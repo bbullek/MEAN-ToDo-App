@@ -6,33 +6,56 @@ import _ from 'lodash'; // Library that incl. utility to easily remove from arra
 
 const todoFactory = angular.module('app.todoFactory', [])
 
-  .factory('todoFactory', () => {
+  .factory('todoFactory', ($http) => {
+
+    /*
+     * Fetches all of the todo's saved to the database.
+     */
+    function getTasks($scope) {
+      $http.get('/todos').then(response => {
+        // Set the displayed todo's to the response we get from the server
+        $scope.todos = response.todos;
+      });
+    }
 
     /*
      * Saves the task to the todo list when the green 'Create Task' button is 
      * clicked or when the user hits enter.
      */
     function createTask($scope, params) {
-      params.createHasInput = false;
-      $scope.createTaskInput = ''; // Clear the textbox
+      // Clicking 'Create Task' with an empty textbox will not create a new DB entry
+      if (!$scope.createTaskInput) { return; }
+
+      $http.post('/todos', {
+        task: $scope.createTaskInput,
+        isCompleted: false,
+        isEditing: false
+      }).then(response => {
+        getTasks($scope);
+        $scope.createTaskInput = ''; // Clear the textbox
+      });
     }
 
     /*
      * Updates the task's name after the user has typed a new string via the Edit
-     * button.
+     * button. Also updates the entry in the database.
      */
-   function updateTask(todo) {
-      todo.task = todo.updatedTask;
-      todo.isEditing = false;
+   function updateTask($scope, todo) {
+      $http.put(`/todos/${todo._id}`, { task: todo.updatedTask }).then(
+        response => {
+          getTasks($scope);
+          todo.isEditing = false;
+      });
     };
 
     /*
      * Removes the task from the user's todo list when they click the Delete 
-     * button.
+     * button. Also deletes it from the database.
      */
     function deleteTask($scope, todoToDelete) {
-      // Use lodash to remove the given todo from the list
-      _.remove($scope.todos, todo => todo.task === todoToDelete.task); 
+      $http.delete(`todos/${todoToDelete._id}`).then(response => {
+        getTasks($scope);
+      });
     }
 
     /*
@@ -57,6 +80,7 @@ const todoFactory = angular.module('app.todoFactory', [])
     }
 
     return {
+      getTasks,
       createTask,
       updateTask,
       deleteTask,
